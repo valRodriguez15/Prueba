@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tours y Actividades</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+
+    <h1 class="mb-4">Lista de Tours</h1>
+
+    <div class="row">
+        {% for tour in tours %}
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ tour.nombre }}</h5>
+                    <p class="card-text">{{ tour.descripcion }}</p>
+                    <p><strong>Precio:</strong> ${{ tour.precio }}</p>
+                    <p><strong>Ubicación:</strong> {{ tour.ubicacion }}</p>
+                    <p><strong>Disponibilidad:</strong>
+                        {% if tour.disponibilidad %} ✅ Disponible {% else %} ❌ No disponible {% endif %}
+                    </p>
+
+                    <h6>Actividades:</h6>
+                    <ul>
+                        {% for actividad in tour.activities.all %}
+                        <li>
+                            {{ actividad.nombre }} - ${{ actividad.precio }} - {{ actividad.horario }}
+                            <a href="{% url 'edit_activity' actividad.id %}" class="btn btn-warning btn-sm">Editar</a>
+                            <form method="post" action="{% url 'delete_activity' actividad.id %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                            </form>
+                        </li>
+                        {% empty %}
+                        <li>No hay actividades disponibles.</li>
+                        {% endfor %}
+                    </ul>
+
+                    <a href="{% url 'edit_tour' tour.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <form method="post" action="{% url 'delete_tour' tour.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted">No hay tours disponibles.</p>
+        {% endfor %}
+    </div>
+
+    <h2 class="mt-5">Agregar un Nuevo Tour</h2>
+    <form method="post" action="{% url 'create_tour' %}">
+        {% csrf_token %}
+        <input type="text" class="form-control mb-2" name="nombre" placeholder="Nombre del Tour" required>
+        <textarea class="form-control mb-2" name="descripcion" placeholder="Descripción" required></textarea>
+        <input type="number" class="form-control mb-2" name="precio" placeholder="Precio" required>
+        <input type="text" class="form-control mb-2" name="ubicacion" placeholder="Ubicación" required>
+        <button type="submit" class="btn btn-primary">Agregar Tour</button>
+    </form>
+
+    <h2 class="mt-5">Agregar una Nueva Actividad</h2>
+    <form method="post" action="{% url 'create_activity' %}">
+        {% csrf_token %}
+        <input type="text" class="form-control mb-2" name="nombre" placeholder="Nombre de la Actividad" required>
+        <textarea class="form-control mb-2" name="detalle" placeholder="Detalle" required></textarea>
+        <input type="number" class="form-control mb-2" name="precio" placeholder="Precio" required>
+        <input type="text" class="form-control mb-2" name="horario" placeholder="Horario" required>
+        <select class="form-control mb-2" name="tour_id" required>
+            <option value="">Seleccionar Tour</option>
+            {% for tour in tours %}
+            <option value="{{ tour.id }}">{{ tour.nombre }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary">Agregar Actividad</button>
+    </form>
+<br>
+<br>
+<br>
+
+</body>
+</html>

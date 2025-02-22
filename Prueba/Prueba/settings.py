@@ -63,7 +63,7 @@ ROOT_URLCONF = 'Prueba.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,6 +134,8 @@ REST_FRAMEWORK = {
 STATIC_URL = 'static/'
 STATIC_ROOT = './static/'
 AUTH_USER_MODEL= 'users.User'
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

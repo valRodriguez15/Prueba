@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth.models import User
 
-# Create your views here.
+def users_view(request):
+    users = User.objects.all()
+    return render(request, "users/users.html", {"users": users})
