@@ -37,7 +37,7 @@ class Activities(models.Model):
     horario = models.CharField(max_length=100)
     edadMin = models.CharField(max_length=30)
     miniature = models.ImageField(upload_to='categories/img/', null=True, blank=True)
-    tour = models.ForeignKey(Tours, related_name='activities', on_delete=models.CASCADE, null=True, blank=True)
+    tour = models.ForeignKey(Tours, related_name='activities', on_delete=models.SET_NULL, null=True, blank=True)
 
     def clean(self):
         if self.tour and not self.tour.disponibilidad:
