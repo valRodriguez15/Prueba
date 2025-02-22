@@ -25,15 +25,15 @@ Describiendo estos conceptos:
 ## 2. Endpoints
 Se encuentran definidos en http://127.0.0.1:8000/docs/
 
-
 ## 3. Manual de Ejecución
+Root url: http://127.0.0.1:8000/categories/
 ### Instrucciones de Instalación
 - Python 3.8+
 - pip
 
 En Windows:
 1. Crear un entorno virtual: python -m venv env
-2. Activar el entorno virtual: .\env\env\Scripts\activate
+2. Activar el entorno virtual: .\envs\env\Scripts\activate
 3. Instalar dependencias: pip install -r requirements.txt
 
 ### Ejecutar el Proyecto
