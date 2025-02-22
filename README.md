@@ -11,7 +11,7 @@ Describiendo estos conceptos:
   3. Plantilla: Define la presentación de los datos, estas son archivos .HTML
   que pueden contener etiquetas de plantilla Django para mostrar datos dinámicos.
 
-### Tecnologías Usadas
+### Tecnologías Utilizadas
 1. Backend
     - Django: Framework para el desarrollo backend (Framework Principal).
     - Django REST Framework (DRF) Para la API
@@ -37,14 +37,14 @@ En Windows:
 3. Instalar dependencias: pip install -r requirements.txt
 
 ### Ejecutar el Proyecto
-1. Realizar migraciones: python manage.py migrate
+- Realizar migraciones: python manage.py migrate
 
 ### Crear un Superusuario (Opcional)
-1. Crear usuario: python manage.py createsuperuser
+- Crear usuario: python manage.py createsuperuser
 
 ### Pruebas
-1. Ejecutar pruebas: python manage.py test
+- Ejecutar pruebas: python manage.py test
 
 ### Ejecutar
-1. Ejecutar el servidor: python manage.py runserver
+- Ejecutar el servidor: python manage.py runserver
 
