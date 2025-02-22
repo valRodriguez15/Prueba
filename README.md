@@ -48,6 +48,3 @@ En Windows:
 ### Ejecutar
 1. Ejecutar el servidor: python manage.py runserver
 
-
-- 
-
